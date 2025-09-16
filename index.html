@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carta para Karlita</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #f9c5d1, #9795ef);
+      font-family: "Segoe UI", sans-serif;
+      overflow: hidden;
+    }
+
+    .envelope {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      background: #ff8fa3;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease;
+    }
+
+    .envelope:hover {
+      transform: scale(1.05);
+    }
+
+    .flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-left: 150px solid transparent;
+      border-right: 150px solid transparent;
+      border-bottom: 100px solid #ff4d6d;
+      transition: transform 1s ease;
+      transform-origin: top;
+      z-index: 2;
+    }
+
+    .letter {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 260px;
+      height: 160px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: center;
+      font-size: 15px;
+      line-height: 1.4;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 1;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s ease;
+    }
+
+    .envelope.open .flap {
+      transform: rotateX(180deg);
+    }
+
+    .envelope.open .letter {
+      opacity: 1;
+      transform: translateY(-40px);
+    }
+
+    /* corazones flotando */
+    .heart {
+      position: absolute;
+      bottom: -10%;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: floatUp 8s infinite ease-in;
+      opacity: 0.7;
+    }
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 0.7; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-110vh) scale(1.5); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- corazones -->
+  <div class="heart" style="left:10%; animation-delay:0s;">❤️</div>
+  <div class="heart" style="left:30%; animation-delay:2s;">💖</div>
+  <div class="heart" style="left:50%; animation-delay:4s;">❤️</div>
+  <div class="heart" style="left:70%; animation-delay:1s;">💖</div>
+  <div class="heart" style="left:90%; animation-delay:3s;">❤️</div>
+
+  <!-- sobre -->
+  <div class="envelope" id="envelope">
+    <div class="flap"></div>
+    <div class="letter">
+      <h3>Para mi Karlita 💌</h3>
+      <p>
+        Mi vida,  
+        Quiero recordarte lo mucho que significas para mí.  
+        Eres la razón de mi sonrisa, mi paz y mi amor.  
+        Aunque la distancia nos sea dificil,  
+        mi corazón siempre estará contigo.  
+        <br><br>
+        Con amor eterno,  
+        Tu Gael 💕
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const envelope = document.getElementById("envelope");
+    envelope.addEventListener("click", () => {
+      envelope.classList.toggle("open");
+    });
+  </script>
+</body>
+</html>
